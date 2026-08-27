@@ -1,0 +1,167 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="ePAY - Universal digital payment platform">
+  <title>ePAY — Universal Payments</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">e<span>PAY</span></div>
+    <button id="loginBtn" class="ghost">Sign in</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">UNIVERSAL DIGITAL PAYMENTS</p>
+
+      <h1>
+        Move supported money with clarity and control.
+      </h1>
+
+      <p>
+        Send, receive, request, invoice and manage supported
+        fiat and cryptocurrency assets from one secure payment
+        workspace.
+      </p>
+
+      <div class="actions">
+        <button id="startBtn">Get Started</button>
+        <button id="piBtn" class="secondary">Connect Pi</button>
+      </div>
+
+      <div id="piStatus" class="status">
+        Pi connection not started.
+      </div>
+    </section>
+
+    <section id="auth" class="panel hidden">
+      <h2>ePAY Account</h2>
+
+      <form id="authForm">
+        <input
+          id="email"
+          type="email"
+          placeholder="Email address"
+          required
+        >
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          minlength="10"
+          required
+        >
+
+        <input
+          id="displayName"
+          type="text"
+          placeholder="Full name"
+          required
+        >
+
+        <div class="actions">
+          <button type="submit">
+            Create Account
+          </button>
+
+          <button
+            type="button"
+            id="signin"
+            class="secondary"
+          >
+            Sign In
+          </button>
+        </div>
+      </form>
+
+      <p id="authMsg"></p>
+    </section>
+
+    <section class="grid">
+
+      <article class="card">
+        <span>WALLET</span>
+        <strong>Multi-Asset Ready</strong>
+
+        <p>
+          Manage supported fiat and cryptocurrency balances,
+          deposits, withdrawals, addresses and wallet activity.
+        </p>
+      </article>
+
+      <article class="card">
+        <span>PAYMENTS</span>
+        <strong>Verified Transaction Status</strong>
+
+        <p>
+          Transactions move through controlled states including
+          initiated, pending, processing, approved, completed,
+          failed, cancelled, reversed and refunded.
+        </p>
+      </article>
+
+      <article class="card">
+        <span>BUSINESS</span>
+        <strong>Merchant Ready</strong>
+
+        <p>
+          Support payment links, invoices, customer records,
+          settlements, analytics and secure business APIs.
+        </p>
+      </article>
+
+    </section>
+
+    <section class="panel">
+
+      <h2>Create Payment Transaction</h2>
+
+      <form id="txForm">
+
+        <input
+          id="asset"
+          value="USD"
+          placeholder="Asset code e.g. USD"
+          required
+        >
+
+        <input
+          id="amount"
+          type="number"
+          min="0.000001"
+          step="any"
+          placeholder="Amount"
+          required
+        >
+
+        <input
+          id="recipient"
+          placeholder="Recipient user UUID (optional)"
+        >
+
+        <button type="submit">
+          Create Transaction
+        </button>
+
+      </form>
+
+      <pre id="txOut"></pre>
+
+    </section>
+  </main>
+
+  <footer>
+    ePAY © 2026.
+    Transaction status is reported from server/provider state.
+    No guaranteed settlement time is implied.
+  </footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+          </html>
