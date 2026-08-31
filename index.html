@@ -1,184 +1,207 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1020">
-  <meta name="description" content="ePAY - Universal digital payment platform">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="description"
+    content="ePAY — Universal digital payment platform for supported fiat and cryptocurrency assets."
+  >
+
+  <meta
+    name="theme-color"
+    content="#0b1020"
+  >
+
   <title>ePAY — Universal Payments</title>
+
   <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="brand">e<span>PAY</span></div>
-    <button id="loginBtn" class="ghost">Sign in</button>
-  </header>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">UNIVERSAL DIGITAL PAYMENTS</p>
+  <!-- =========================
+       APP LOADING SCREEN
+  ========================== -->
 
-      <h1>
-        Move supported money with clarity and control.
-      </h1>
+  <div id="appLoader" class="app-loader">
+    <div class="loader-logo">e<span>PAY</span></div>
+    <div class="loader-spinner"></div>
+    <p>Loading secure payment workspace...</p>
+  </div>
 
-      <p>
-        Send, receive, request, invoice and manage supported
-        fiat and cryptocurrency assets from one secure payment
-        workspace.
-      </p>
 
-      <div class="actions">
-        <button id="startBtn">Get Started</button>
-        <button id="piBtn" class="secondary">Connect Pi</button>
-      </div>
+  <!-- =========================
+       MOBILE OVERLAY
+  ========================== -->
 
-      <div id="piStatus" class="status">
-        Pi connection not started.
-      </div>
-    </section>
+  <div
+    id="sidebarOverlay"
+    class="sidebar-overlay"
+    aria-hidden="true"
+  ></div>
 
-    <section id="auth" class="panel hidden">
-      <h2>ePAY Account</h2>
 
-      <form id="authForm">
-        <input
-          id="email"
-          type="email"
-          placeholder="Email address"
-          required
+  <!-- =========================
+       APPLICATION SHELL
+  ========================== -->
+
+  <div id="app" class="app-shell">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside
+      id="sidebar"
+      class="sidebar"
+      aria-label="Main navigation"
+    >
+
+      <div class="sidebar-header">
+
+        <a
+          href="#dashboard"
+          class="brand"
+          data-page="dashboard"
         >
+          e<span>PAY</span>
+        </a>
 
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          minlength="10"
-          required
+        <button
+          id="closeSidebar"
+          class="icon-button mobile-only"
+          type="button"
+          aria-label="Close navigation"
         >
-
-        <input
-          id="displayName"
-          type="text"
-          placeholder="Full name"
-          required
-        >
-
-        <div class="actions">
-          <button type="submit">
-            Create Account
-          </button>
-
-          <button
-            type="button"
-            id="signin"
-            class="secondary"
-          >
-            Sign In
-          </button>
-        </div>
-      </form>
-
-      <p id="authMsg"></p>
-    </section>
-
-    <section class="grid">
-
-      <article class="card">
-        <span>WALLET</span>
-        <strong>Multi-Asset Ready</strong>
-
-        <p>
-          Manage supported fiat and cryptocurrency balances,
-          deposits, withdrawals, addresses and wallet activity.
-        </p>
-      </article>
-
-      <article class="card">
-        <span>PAYMENTS</span>
-        <strong>Verified Transaction Status</strong>
-
-        <p>
-          Transactions move through controlled states including
-          initiated, pending, processing, approved, completed,
-          failed, cancelled, reversed and refunded.
-        </p>
-      </article>
-
-      <article class="card">
-        <span>BUSINESS</span>
-        <strong>Merchant Ready</strong>
-
-        <p>
-          Support payment links, invoices, customer records,
-          settlements, analytics and secure business APIs.
-        </p>
-      </article>
-
-    </section>
-
-    <section class="panel">
-
-      <h2>Create Payment Transaction</h2>
-
-      <form id="txForm">
-
-        <input
-          id="asset"
-          value="USD"
-          placeholder="Asset code e.g. USD"
-          required
-        >
-
-        <input
-          id="amount"
-          type="number"
-          min="0.000001"
-          step="any"
-          placeholder="Amount"
-          required
-        >
-
-        <input
-          id="recipient"
-          placeholder="Recipient user UUID (optional)"
-        >
-
-        <button type="submit">
-          Create Transaction
+          ×
         </button>
 
-      </form>
+      </div>
 
-      <pre id="txOut"></pre>
 
-    </section>
-  </main>
+      <!-- USER MINI PROFILE -->
 
-  <footer>
-    ePAY © 2026.
-    Transaction status is reported from server/provider state.
-    No guaranteed settlement time is implied.
-  </footer>
+      <div class="sidebar-profile">
 
-  <src="https://sdk.minepi.com/pi-sdk.js"></script>
+        <div class="avatar" id="sidebarAvatar">
+          EP
+        </div>
 
-<script type="module">
-  await Pi.init({ version: "2.0" });
-</script>
-src="https://sdk.minepi.com/pi-sdk.js"></script>
+        <div class="profile-info">
 
-<script type="module">
-  await Pi.init({ version: "2.0" });
-</script>
+          <strong id="sidebarName">
+            ePAY User
+          </strong>
 
-<<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+          <span id="sidebarRole">
+            Personal Account
+          </span>
 
-<script type="module">
-  await Pi.init({ version: "2.0" });
-</script>
+        </div>
 
-<script type="module" src="/app.js"></script>
-</body>
-          </html>
+      </div>
+
+
+      <!-- MAIN NAVIGATION -->
+
+      <nav class="navigation">
+
+        <p class="nav-label">
+          MAIN
+        </p>
+
+        <a
+          href="#dashboard"
+          class="nav-link active"
+          data-page="dashboard"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a
+          href="#wallet"
+          class="nav-link"
+          data-page="wallet"
+        >
+          <span class="nav-icon">◈</span>
+          <span>Wallet</span>
+        </a>
+
+        <a
+          href="#send"
+          class="nav-link"
+          data-page="send"
+        >
+          <span class="nav-icon">↑</span>
+          <span>Send Money</span>
+        </a>
+
+        <a
+          href="#receive"
+          class="nav-link"
+          data-page="receive"
+        >
+          <span class="nav-icon">↓</span>
+          <span>Receive</span>
+        </a>
+
+        <a
+          href="#request"
+          class="nav-link"
+          data-page="request"
+        >
+          <span class="nav-icon">＋</span>
+          <span>Request Money</span>
+        </a>
+
+        <a
+          href="#transactions"
+          class="nav-link"
+          data-page="transactions"
+        >
+          <span class="nav-icon">↔</span>
+          <span>Transactions</span>
+        </a>
+
+
+        <p class="nav-label">
+          BUSINESS
+        </p>
+
+        <a
+          href="#payment-links"
+          class="nav-link"
+          data-page="payment-links"
+        >
+          <span class="nav-icon">🔗</span>
+          <span>Payment Links</span>
+        </a>
+
+        <a
+          href="#invoices"
+          class="nav-link"
+          data-page="invoices"
+        >
+          <span class="nav-icon">▤</span>
+          <span>Invoices</span>
+        </a>
+
+        <a
+          href="#merchant"
+          class="nav-link"
+          data-page="merchant"
+        >
+          <span class="nav-icon">▣</span>
+          <span>Merchant</span>
+        </a>
+
+
+        <p class="nav-label">
